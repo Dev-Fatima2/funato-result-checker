@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Register</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+  --muted:#94a3b8;
+  --accent:#60a5fa;
+  --primary:#2563eb;
+  --transition:0.3s ease;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(to bottom right,#020617,#0f172a);
+  padding:30px 20px;
+}
+
+.card{
+  width:100%;
+  max-width:550px;
+  background:#111827;
+  padding:40px;
+  border-radius:20px;
+}
+
+.card h2{
+  color:white;
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.form-group{
+  margin-bottom:20px;
+}
+
+input,
+select{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:12px;
+  background:#1e293b;
+  color:white;
+}
+
+button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:12px;
+  background:#2563eb;
+  color:white;
+  cursor:pointer;
+}
+
+p{
+  color:#94a3b8;
+  text-align:center;
+  margin-top:20px;
+}
+
+a{
+  color:#60a5fa;
+}
+
+
+.password-group { position: relative; }
+
+.toggle-password,
+.password-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: var(--muted);
+  transition: var(--transition);
+  z-index: 3;
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.toggle-password:hover,
+.password-toggle:hover {
+  color: var(--accent);
+  background: rgba(14, 165, 233, 0.1);
+}
+
+.toggle-password.active,
+.password-toggle.active { color: var(--primary); }
+
+.password-toggle svg { transition: var(--transition); }
+.password-toggle .eye-closed.hidden { display: none; }
+.password-toggle.active .eye-open { display: none; }
+.password-toggle.active .eye-closed.hidden { display: block; }
+.toast{
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:#2563eb;
+  color:white;
+  padding:14px 18px;
+  border-radius:10px;
+  z-index:9999;
+  font-size:14px;
+  box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+.toast.success{
+  background:#16a34a;
+}
+
+.toast.error{
+  background:#dc2626;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+  <h2>Create Account</h2>
+
+  <form id='signupForm'>
+
+    <div class="form-group">
+      <input type="text" id="fullName" placeholder="Full Name">
+    </div>
+
+    <div class="form-group">
+      <input type="email" id="email" placeholder="Email">
+    </div>
+
+    <div class="form-group">
+      <input type="text" id="matricNo" placeholder="Matric Number">
+    </div>
+
+    <div class="form-group">
+
+      <select id="dpt">
+
+        <option value="Computer Science">Computer Science</option>
+        <option value="Cyber Security">Cyber Security</option>
+        <option value="Software Engineering">Software Engineering</option>
+
+      </select>
+
+    </div>
+
+    <div class="form-group password-group">
+       <input
+    type="password"
+    id="password"
+    class="form-input"
+    placeholder=" "
+    required
+  >
+
+        <span class="toggle-password" id="togglePassword">
+    👁️
+  </span>
+    </div>
+
+    <button type="submit" id="registerBtn">
+      Register
+    </button>
+
+  </form>
+
+  <p>
+    Already have an account?
+    <a href="login.html">Login</a>
+  </p>
+
+</div>
+<script src="./assets/js/auth.js"></script>
+
+</body>
+</html>

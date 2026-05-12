@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Courses</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+:root{
+
+  --bg:#020617;
+  --card:#111827;
+  --text:#ffffff;
+  --muted:#94a3b8;
+  --primary:#2563eb;
+  --border:rgba(255,255,255,0.08);
+
+}
+
+body.light{
+
+  --bg:#f1f5f9;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#475569;
+  --border:rgba(0,0,0,0.08);
+
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  transition:0.4s ease;
+}
+
+/* LAYOUT */
+
+.dashboard{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  background:var(--card);
+  padding:30px;
+  border-right:1px solid var(--border);
+}
+
+.sidebar h2{
+  margin-bottom:30px;
+}
+
+.sidebar a{
+  display:block;
+  color:var(--text);
+  text-decoration:none;
+  padding:14px;
+  margin-bottom:10px;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+  background:var(--primary);
+  color:white;
+}
+
+/* MAIN */
+
+.main{
+  padding:30px;
+}
+
+/* TOPBAR */
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+}
+
+/* BUTTONS */
+
+.toggle-btn,
+.menu-btn{
+  background:var(--primary);
+  color:white;
+  border:none;
+  padding:12px 18px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* COURSES GRID */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* CARD */
+
+.card{
+  background:var(--card);
+  padding:25px;
+  border-radius:20px;
+  border:1px solid var(--border);
+  transition:0.3s;
+  animation:fadeUp 1s ease;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card h3{
+  margin-bottom:10px;
+}
+
+.card p{
+  color:var(--muted);
+  margin-bottom:15px;
+}
+
+.badge{
+  display:inline-block;
+  background:rgba(37,99,235,0.15);
+  color:#60a5fa;
+  padding:8px 14px;
+  border-radius:30px;
+  font-size:14px;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+/* MOBILE */
+
+.menu-btn{
+  display:none;
+}
+
+@media(max-width:900px){
+
+  .dashboard{
+    grid-template-columns:1fr;
+  }
+
+  .sidebar{
+    position:fixed;
+    left:-100%;
+    top:0;
+    width:260px;
+    height:100%;
+    z-index:1000;
+    transition:0.4s;
+  }
+
+  .sidebar.active{
+    left:0;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar" id="sidebar">
+
+    <h2>FUNATO</h2>
+
+    <a href="dashboard.html">Dashboard</a>
+
+    <a href="result.html">Results</a>
+
+    <a href="courses.html" class="active">Courses</a>
+
+    <a href="lecturers.html">Lecturers</a>
+
+    <a href="profile.html">Profile</a>
+
+    <a href="logout.html">Logout</a>
+
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+      <div>
+
+        <button class="menu-btn" id="menuBtn">
+          ☰
+        </button>
+
+        <h1>Registered Courses</h1>
+
+      </div>
+
+      <button class="toggle-btn" id="themeBtn">
+        🌙 Theme
+      </button>
+
+    </div>
+
+    <!-- COURSES -->
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>CYB 103</h3>
+
+        <p>
+          Introduction to Cyber Security
+        </p>
+
+        <span class="badge">
+          3 Units
+        </span>
+
+      </div>
+
+      <div class="card">
+
+        <h3>CSC 101</h3>
+
+        <p>
+          Introduction to Computing
+        </p>
+
+        <span class="badge">
+          3 Units
+        </span>
+
+      </div>
+
+      <div class="card">
+
+        <h3>MTH 101</h3>
+
+        <p>
+          Elementary Mathematics
+        </p>
+
+        <span class="badge">
+          3 Units
+        </span>
+
+      </div>
+
+      <div class="card">
+
+        <h3>GST 111</h3>
+
+        <p>
+          Communication in English
+        </p>
+
+        <span class="badge">
+          2 Units
+        </span>
+
+      </div>
+
+      <div class="card">
+
+        <h3>PHY 101</h3>
+
+        <p>
+          General Physics
+        </p>
+
+        <span class="badge">
+          3 Units
+        </span>
+
+      </div>
+
+      <div class="card">
+
+        <h3>CHM 101</h3>
+
+        <p>
+          Basic Chemistry
+        </p>
+
+        <span class="badge">
+          2 Units
+        </span>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+/* THEME TOGGLE */
+
+const themeBtn =
+document.getElementById("themeBtn");
+
+themeBtn.addEventListener("click",()=>{
+
+  document.body.classList.toggle("light");
+
+});
+
+/* MOBILE SIDEBAR */
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const sidebar =
+document.getElementById("sidebar");
+
+menuBtn.addEventListener("click",()=>{
+
+  sidebar.classList.toggle("active");
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Results</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+:root{
+
+  --bg:#020617;
+  --card:#111827;
+  --text:#ffffff;
+  --muted:#94a3b8;
+  --primary:#2563eb;
+  --border:rgba(255,255,255,0.08);
+
+}
+
+body.light{
+
+  --bg:#f1f5f9;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#475569;
+  --border:rgba(0,0,0,0.08);
+
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  transition:0.4s ease;
+}
+
+/* LAYOUT */
+
+.dashboard{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  background:var(--card);
+  padding:30px;
+  border-right:1px solid var(--border);
+}
+
+.sidebar h2{
+  margin-bottom:30px;
+}
+
+.sidebar a{
+  display:block;
+  color:var(--text);
+  text-decoration:none;
+  padding:14px;
+  margin-bottom:10px;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+  background:var(--primary);
+  color:white;
+}
+
+/* MAIN */
+
+.main{
+  padding:30px;
+}
+
+/* TOPBAR */
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+}
+
+/* BUTTONS */
+
+.toggle-btn,
+.menu-btn{
+  background:var(--primary);
+  color:white;
+  border:none;
+  padding:12px 18px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* CARD */
+
+.result-card{
+  max-width:1000px;
+  margin:auto;
+  background:var(--card);
+  padding:30px;
+  border-radius:20px;
+  border:1px solid var(--border);
+  animation:fadeUp 1s ease;
+}
+
+.result-card h1{
+  margin-bottom:20px;
+}
+
+/* TABLE */
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:20px;
+  overflow:hidden;
+  border-radius:12px;
+}
+
+th,td{
+  border:1px solid var(--border);
+  padding:15px;
+  text-align:left;
+}
+
+th{
+  background:rgba(255,255,255,0.04);
+}
+
+/* BADGE */
+
+.grade{
+  padding:6px 12px;
+  border-radius:20px;
+  background:rgba(37,99,235,0.15);
+  color:#60a5fa;
+  display:inline-block;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+/* MOBILE */
+
+.menu-btn{
+  display:none;
+}
+
+@media(max-width:900px){
+
+  .dashboard{
+    grid-template-columns:1fr;
+  }
+
+  .sidebar{
+    position:fixed;
+    left:-100%;
+    top:0;
+    width:260px;
+    height:100%;
+    z-index:1000;
+    transition:0.4s;
+  }
+
+  .sidebar.active{
+    left:0;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar" id="sidebar">
+
+    <h2>FUNATO</h2>
+
+    <a href="dashboard.html">Dashboard</a>
+
+    <a href="results.html" class="active">Results</a>
+
+    <a href="courses.html">Courses</a>
+
+    <a href="lecturers.html">Lecturers</a>
+
+    <a href="profile.html">Profile</a>
+
+    <a href="logout.html">Logout</a>
+
+  </aside>
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+      <div>
+
+        <button class="menu-btn" id="menuBtn">
+          ☰
+        </button>
+
+        <h1>Semester Results</h1>
+
+      </div>
+
+      <button class="toggle-btn" id="themeBtn">
+        🌙 Theme
+      </button>
+
+    </div>
+
+    <!-- RESULT CARD -->
+
+    <div class="result-card">
+
+      <h1>Your Results</h1>
+
+      <table>
+
+        <tr>
+          <th>Course</th>
+          <th>Unit</th>
+          <th>Score</th>
+          <th>Grade</th>
+        </tr>
+
+        <tr>
+          <td>CYB 103</td>
+          <td>3</td>
+          <td>85</td>
+          <td><span class="grade">A</span></td>
+        </tr>
+
+        <tr>
+          <td>CSC 101</td>
+          <td>2</td>
+          <td>75</td>
+          <td><span class="grade">A</span></td>
+        </tr>
+
+      </table>
+
+    </div>
+
+  </main>
+
+</div>
+
+<script>
+
+/* THEME TOGGLE */
+
+const themeBtn =
+document.getElementById("themeBtn");
+
+themeBtn.addEventListener("click",()=>{
+
+  document.body.classList.toggle("light");
+
+});
+
+/* SIDEBAR TOGGLE */
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const sidebar =
+document.getElementById("sidebar");
+
+menuBtn.addEventListener("click",()=>{
+
+  sidebar.classList.toggle("active");
+
+});
+
+</script>
+
+</body>
+</html>
